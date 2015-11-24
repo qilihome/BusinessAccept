@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.businessaccept"
+    android:versionCode="1"
+    android:versionName="1.0" >
+	<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.businessaccept.ui.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.example.businessaccept.ui.IndexActivity"
+            android:label="@string/app_name_index" >
+        </activity>
+        
+    <activity
+            android:name="com.example.businessaccept.ui.NewBusinessActivity"
+            android:label="@string/app_name_new_business" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.MatterActivity"
+            android:label="@string/app_name_matter" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.QueryUserActivity"
+            android:label="@string/app_name_query_user" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.UserActivity"
+            android:label="@string/app_name_user" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.QueryBusinessActivity"
+            android:label="@string/app_name_query_business" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.BusinessListActivity"
+            android:label="@string/app_name_business_list" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.BusinessMatterActivity"
+            android:label="@string/app_name_business_matter" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.FollowRecordActivity"
+            android:label="@string/app_name_follow_record" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.DescribeActivity"
+            android:label="@string/app_name_describe" >
+        </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.AcceptActivity"
+            android:label="@string/app_name_accept" >
+        </activity>
+        
+    </application>
+
+</manifest>
