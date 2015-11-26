@@ -8,7 +8,7 @@ import org.apache.http.conn.ConnectTimeoutException;
 import com.example.businessaccept.R;
 import com.example.businessaccept.service.IUserService;
 import com.example.businessaccept.service.ServiceRulesException;
-import com.example.businessaccept.service.UserServiceImpl;
+import com.example.businessaccept.service.impl.UserServiceImpl;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

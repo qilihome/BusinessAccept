@@ -12,6 +12,6 @@ public class UserActivity extends Activity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_user);
+		setContentView(R.layout.layout_customer_list);
 	}
 }

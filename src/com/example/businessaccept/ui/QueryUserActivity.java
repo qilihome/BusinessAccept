@@ -17,7 +17,7 @@ public class QueryUserActivity extends Activity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_query_user);
+		setContentView(R.layout.layout_query_customer);
 		queryButton = (Button)findViewById(R.id.button_query_user_query);
 		queryButton.setOnClickListener(new OnClickListener()
 		{

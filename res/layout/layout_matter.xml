@@ -13,7 +13,7 @@
             android:text="业务受理部门" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinner_matter_depart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />
@@ -28,7 +28,7 @@
             android:text="业务受理人" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/spinner_matter_customer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />

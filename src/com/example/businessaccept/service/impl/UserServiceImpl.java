@@ -1,4 +1,4 @@
-package com.example.businessaccept.service;
+package com.example.businessaccept.service.impl;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -8,6 +8,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import com.example.businessaccept.service.IUserService;
+import com.example.businessaccept.service.ServiceRulesException;
 import com.example.businessaccept.ui.MainActivity;
 
 import android.util.Log;
