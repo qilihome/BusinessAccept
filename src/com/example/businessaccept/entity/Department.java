@@ -72,4 +72,10 @@ public class Department
 		this.departNO = departNO;
 	}
 	
+	@Override
+	public String toString()
+	{
+		// TODO Auto-generated method stub
+		return departName;
+	}
 }

@@ -75,7 +75,14 @@ public class NewBusinessActivity extends Activity
           
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		int businessId = getIntent().getIntExtra("businessId", 0);
+		
 		setContentView(R.layout.layout_business);
+		if (businessId >0){
+			//TODO
+			//赋值
+		}
 		findView();
 		setListener();
 		setData();
@@ -153,6 +160,9 @@ public class NewBusinessActivity extends Activity
 				if (bId > 0){
 					Intent _Intent = new Intent(NewBusinessActivity.this,
 							MatterActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putInt("businessId", bId);
+					_Intent.putExtras(bundle);
 					startActivity(_Intent);
 				}else{
 					Toast.makeText(NewBusinessActivity.this, "保存业务失败，请稍后再试", Toast.LENGTH_SHORT).show();

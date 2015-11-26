@@ -1,7 +1,5 @@
 package com.example.businessaccept.entity;
 
-import java.util.Date;
-
 /**
  * 操作员明细表tb_sys_ADMIN
  * 
@@ -88,5 +86,10 @@ public class Admin
 	{
 		this.password = password;
 	}
-	
+	@Override
+	public String toString()
+	{
+		// TODO Auto-generated method stub
+		return name;
+	}
 }

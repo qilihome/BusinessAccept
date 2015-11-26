@@ -27,6 +27,7 @@ import org.apache.http.util.EntityUtils;
 import com.example.businessaccept.entity.BusinessInfo;
 import com.example.businessaccept.service.IBusinessInfoService;
 import com.example.businessaccept.service.ServiceRulesException;
+import com.example.businessaccept.util.Constant;
 import com.example.businessaccept.util.JsonHepler;
 
 public class BusinessInfoServiceImpl implements IBusinessInfoService
@@ -71,7 +72,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 		if (status != HttpStatus.SC_OK)
 		{
 			throw new ServiceRulesException(
-					"访问保存业务信息访问出错，error code="+status);
+					String.format(Constant.REQUEST_ERROR, "保存业务信息", status));
 		}
 
 		String result = EntityUtils.toString(response.getEntity(), HTTP.UTF_8);
@@ -83,7 +84,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 		}
 		else
 		{
-			throw new ServiceRulesException("保存业务失败，稍后再试");
+			throw new ServiceRulesException(String.format(Constant.RESPOSE_ERROR, "保存业务"));
 		}
 	}
 

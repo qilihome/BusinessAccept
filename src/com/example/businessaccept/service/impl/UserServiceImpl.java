@@ -1,5 +1,8 @@
 package com.example.businessaccept.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -8,9 +11,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import com.example.businessaccept.entity.Admin;
+import com.example.businessaccept.entity.BusinessType;
 import com.example.businessaccept.service.IUserService;
 import com.example.businessaccept.service.ServiceRulesException;
 import com.example.businessaccept.ui.MainActivity;
+import com.example.businessaccept.util.Constant;
+import com.example.businessaccept.util.JsonHepler;
 
 import android.util.Log;
 
@@ -91,6 +98,40 @@ public class UserServiceImpl implements IUserService
 			throw new
 			  ServiceRulesException(MainActivity.MSG_LOGIN_FAIL);
 		}
+	}
+
+	@Override
+	public List<Admin> queryByDeptId(int deptId) throws Exception
+	{
+		List<Admin> list = null;
+		// get
+		HttpClient client = new DefaultHttpClient();
+		/**
+		 * 真机与wifi在同一个网段
+		 */
+		String uri = "http://10.0.2.2:8080/ba/adminAction_queryByDepart.action?deptId="+deptId;
+		HttpGet get = new HttpGet(uri);
+		// 响应
+		HttpResponse response = client.execute(get);
+
+		int status = response.getStatusLine().getStatusCode();
+		if (status != HttpStatus.SC_OK)
+		{
+			throw new ServiceRulesException(
+					String.format(Constant.REQUEST_ERROR, "查询用户信息", status));
+		}
+
+		String result = EntityUtils.toString(response.getEntity(), HTTP.UTF_8);
+
+		if (result != null && !"null".equals(result) && "" != result)
+		{
+			list = (List<Admin>)JsonHepler.parseCollection(result, ArrayList.class, Admin.class);
+		}
+		else
+		{
+			throw new ServiceRulesException(String.format(Constant.RESPOSE_ERROR, "查询用户信息"));
+		}
+		return list;
 	}
 
 }
