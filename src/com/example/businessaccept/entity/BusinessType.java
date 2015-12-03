@@ -1,5 +1,7 @@
 package com.example.businessaccept.entity;
 
+import java.io.Serializable;
+
 /**
  * 业务类别表tb_fun_BusinessType
  * 
@@ -8,7 +10,7 @@ package com.example.businessaccept.entity;
  * qq 197399622
  *
  */
-public class BusinessType
+public class BusinessType implements Serializable
 {
 	/* 业务类别ID */
 	private int businessTypeID;

@@ -27,5 +27,20 @@
         <item>地址</item>
         <item>电话</item>
     </string-array>
+    
+    <string-array name="query_business_my">
+        <item>--请选中--</item>
+        <item>我创建的业务</item>
+        <item>我跟进过的业务</item>
+        <item>需我跟进的业务</item>
+    </string-array>
+    
+    <string-array name="query_business_status">
+        <item>--请选中--</item>
+        <item>新建</item>
+        <item>流转</item>
+        <item>注销</item>
+         <item>结束</item>
+    </string-array>
 
 </resources>
