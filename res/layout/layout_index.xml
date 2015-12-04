@@ -2,43 +2,60 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
     <TableRow android:orientation="horizontal" >
+
         <TextView
+            android:id="@+id/textview_index_welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="欢迎您，操作员" />
+            android:text="欢迎您"
+            android:textSize="20sp" />
     </TableRow>
-    <TableRow android:orientation="horizontal" >
+
+    <TableRow
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
         <Button
             android:id="@+id/button_index_new_business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="新建业务" />
+
         <Button
+            android:id="@+id/button_index_query_business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="看板业务" />
     </TableRow>
+
     <TableRow android:orientation="horizontal" >
+
         <TextView
+            android:id="@+id/textview_index_bCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="当前待处理业务8条" />
+            android:text="当前待处理业务0条"
+            android:textSize="20sp" />
     </TableRow>
-    <TableRow android:orientation="horizontal" >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoLink="all"
-            android:text="业务类别|事项描述|提交人" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoLink="all"
-            android:text="业务类别|事项描述|提交人" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/list_index_businesses"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+
     </TableRow>
+
 </TableLayout>

@@ -6,13 +6,17 @@ import java.net.SocketTimeoutException;
 import org.apache.http.conn.ConnectTimeoutException;
 
 import com.example.businessaccept.R;
+import com.example.businessaccept.entity.Admin;
 import com.example.businessaccept.service.IUserService;
 import com.example.businessaccept.service.ServiceRulesException;
 import com.example.businessaccept.service.impl.UserServiceImpl;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +45,7 @@ public class MainActivity extends Activity
 	private static ProgressDialog dialog;
 	
 	private IUserService userService = new UserServiceImpl();
+	private Admin admin = null;
 
 	/**
 	 * 初始化控件
@@ -104,7 +109,8 @@ public class MainActivity extends Activity
 					{
 						try
 						{
-							userService.userLogin(loginName, loginPassword);
+							admin = userService.userLogin(loginName, loginPassword);
+							
 							iHandler.sendEmptyMessage(FLAG_LOGIN_SUCCESS);
 						}
 						catch(ConnectTimeoutException e){
@@ -192,8 +198,19 @@ public class MainActivity extends Activity
 			case FLAG_LOGIN_SUCCESS:
 				MainActivity _MainActivity = (MainActivity) mActivity.get();
 				//_MainActivity.showTip(MSG_LOGIN_SUCCESS);
+				//SharedPreferences 保存数据的实现代码
+				SharedPreferences sharedPreferences =
+				_MainActivity.getSharedPreferences("user", Context.MODE_PRIVATE);
+				Editor editor = sharedPreferences.edit();
+				//如果不能找到Editor接口。尝试使用 SharedPreferences.Editor
+				editor.putInt("id", _MainActivity.admin.getId());
+				editor.putString("name", _MainActivity.admin.getName());
+				editor.putInt("deptId", _MainActivity.admin.getDeptId());
+				//我将用户信息保存到其中，你也可以保存登录状态
+				editor.commit();
 				Intent _Intent = new Intent(_MainActivity, IndexActivity.class);
 				_MainActivity.startActivity(_Intent);
+				_MainActivity.finish();
 				break;
 			default:
 				break;

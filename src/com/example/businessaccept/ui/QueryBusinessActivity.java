@@ -179,7 +179,7 @@ public class QueryBusinessActivity extends Activity
 			ArrayList list = msg.getData().getParcelableArrayList("list");
 			List<BusinessType> bts=(List<BusinessType>)list.get(0);
 			QueryBusinessActivity queryBusinessActivit =((QueryBusinessActivity) mActivity.get());
-			queryBusinessActivit.setbt(list);
+			queryBusinessActivit.setbt(bts);
 			
 		}
 

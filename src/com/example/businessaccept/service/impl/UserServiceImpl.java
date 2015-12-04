@@ -12,7 +12,6 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import com.example.businessaccept.entity.Admin;
-import com.example.businessaccept.entity.BusinessType;
 import com.example.businessaccept.service.IUserService;
 import com.example.businessaccept.service.ServiceRulesException;
 import com.example.businessaccept.ui.MainActivity;
@@ -25,7 +24,7 @@ public class UserServiceImpl implements IUserService
 {
 
 	@Override
-	public void userLogin(String loginName, String loginPassword)
+	public Admin userLogin(String loginName, String loginPassword)
 			throws Exception
 	{
 		// TODO Auto-generated method stub
@@ -93,6 +92,8 @@ public class UserServiceImpl implements IUserService
 		if (result != null && !"null".equals(result) && "" != result)
 		{
 			Log.i("douzi", "登陆成功");
+			Admin admin = JsonHepler.parseObject(result, Admin.class);
+			return admin;
 		}
 		else{
 			throw new

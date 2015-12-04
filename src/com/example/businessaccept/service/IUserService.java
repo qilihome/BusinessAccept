@@ -6,7 +6,7 @@ import com.example.businessaccept.entity.Admin;
 
 public interface IUserService
 {
-	public void userLogin(String loginName, String loginPassword)
+	public Admin userLogin(String loginName, String loginPassword)
 			throws Exception;
 	
 	public List<Admin> queryByDeptId(int deptId) throws Exception;

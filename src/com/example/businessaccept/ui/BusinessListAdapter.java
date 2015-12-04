@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.businessaccept.R;
 import com.example.businessaccept.entity.BusinessInfo;
+import com.example.businessaccept.ui.vo.BusinessInfoVo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,8 +17,8 @@ public class BusinessListAdapter extends BaseAdapter
 {
 	private Context context;
 	
-	private List<BusinessInfo> list;
-	public BusinessListAdapter(Context context, List<BusinessInfo> list)
+	private List<BusinessInfoVo> list;
+	public BusinessListAdapter(Context context, List<BusinessInfoVo> list)
 	{
 		this.context = context;
 		this.list = list;

@@ -18,10 +18,16 @@
         <activity
             android:name="com.example.businessaccept.ui.MainActivity"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.businessaccept.ui.IndexActivity"
             android:label="@string/app_name_index" >
+            
         </activity>
         <activity
             android:name="com.example.businessaccept.ui.NewBusinessActivity"
@@ -43,11 +49,7 @@
         <activity
             android:name="com.example.businessaccept.ui.QueryBusinessActivity"
             android:label="@string/app_name_query_business" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name="com.example.businessaccept.ui.BusinessListActivity"

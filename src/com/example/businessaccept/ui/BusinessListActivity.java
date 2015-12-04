@@ -3,10 +3,10 @@ package com.example.businessaccept.ui;
 import java.util.List;
 
 import com.example.businessaccept.R;
-import com.example.businessaccept.entity.BusinessInfo;
 import com.example.businessaccept.service.IBusinessInfoService;
 import com.example.businessaccept.service.impl.BusinessInfoServiceImpl;
 import com.example.businessaccept.ui.vo.BusinessCondition;
+import com.example.businessaccept.ui.vo.BusinessInfoVo;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ public class BusinessListActivity extends Activity
 		
 		try
 		{
-			List<BusinessInfo> list = businessInfoService.query(businessCondition);
+			List<BusinessInfoVo> list = businessInfoService.query(businessCondition);
 			adapter = new BusinessListAdapter(BusinessListActivity.this, list);
 			buesinessGridView = (GridView)findViewById(R.id.gridview_grid_businesses);
 			buesinessGridView.setAdapter(adapter);
