@@ -174,7 +174,7 @@ public class NewBusinessActivity extends Activity
 					Bundle bundle = new Bundle();
 					bundle.putInt("businessId", bId);
 					_Intent.putExtras(bundle);
-					startActivity(_Intent);
+					startActivityForResult(_Intent, 4);
 				}else{
 					Toast.makeText(NewBusinessActivity.this, "保存业务失败，请稍后再试", Toast.LENGTH_SHORT).show();
 				}

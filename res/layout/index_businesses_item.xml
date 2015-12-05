@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:textSize="14sp" />
+
 
     <TextView
         android:id="@+id/textview_index_list_desc"
@@ -18,7 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:singleLine="true"  />
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textSize="14sp" />
+
 
     <TextView
         android:id="@+id/textview_index_list_user"
@@ -26,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textSize="14sp" />
 
 </LinearLayout>

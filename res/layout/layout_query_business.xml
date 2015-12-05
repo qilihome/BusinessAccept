@@ -17,16 +17,16 @@
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="业务类别" />
         
         <Spinner
                 android:id="@+id/spinner_query_business_type"
-                android:layout_width="fill_parent"
+                android:layout_width="0.0dip"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:spinnerMode="dialog" >
             </Spinner>
     </TableRow>
@@ -34,16 +34,16 @@
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="我的业务" />
         
         <Spinner
                 android:id="@+id/spinner_query_business_my"
-                android:layout_width="fill_parent"
+                android:layout_width="0.0dip"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:spinnerMode="dialog"
                 android:entries="@array/query_business_my"
                  >
@@ -53,16 +53,16 @@
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="业务状态" />
         
         <Spinner
                 android:id="@+id/spinner_query_business_status"
-                android:layout_width="fill_parent"
+                android:layout_width="0.0dip"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:spinnerMode="dialog"
                 android:entries="@array/query_business_status"
                  >
@@ -72,78 +72,83 @@
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="业务编号" />
 
         <EditText
             android:id="@+id/edittext_query_business_businessNo"
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
     </TableRow>
 
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="事项描述" />
 
         <EditText
             android:id="@+id/edittext_query_business_business"
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:hint="关键字查询" />
     </TableRow>
 
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="建档日期起：" />
 
         <EditText
             android:id="@+id/edittext_query_business_startTime"
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
     </TableRow>
 
     <TableRow android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="建档日期止：" />
 
         <EditText
             android:id="@+id/edittext_query_business_endTime"
-            android:layout_width="match_parent"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
     </TableRow>
 
     <TableRow android:orientation="horizontal" >
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/button_query_business_index"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="首页" />
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/button_query_business_reset"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="重置" />
         <Button
             android:id="@+id/button_query_business_query"
-            android:layout_width="wrap_content"
+            android:layout_width="0.0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="查询" />
     </TableRow>
 

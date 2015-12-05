@@ -31,6 +31,8 @@ import android.widget.Toast;
 
 public class QueryBusinessActivity extends Activity
 {
+	private Button indexButton;
+	private Button resetButton;
 	private Button queryButton;
 	private Spinner businessTypeSpinner;
 	List<BusinessType> businessTypes = new ArrayList<BusinessType>();
@@ -58,15 +60,44 @@ public class QueryBusinessActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_query_business);
 
+		indexButton = (Button)findViewById(R.id.button_query_business_index);
+		resetButton = (Button)findViewById(R.id.button_query_business_reset);
 		queryButton = (Button) findViewById(R.id.button_query_business_query);
 		businessTypeSpinner = (Spinner) findViewById(
 				R.id.spinner_query_business_type);
 		myBusinessSpinner = (Spinner)findViewById(R.id.spinner_query_business_my);
 		statusSpinner = (Spinner)findViewById(R.id.spinner_query_business_status);
 		businessNoEditText = (EditText)findViewById(R.id.edittext_query_business_businessNo);
-		businessContentEditText=(EditText)findViewById(R.id.edittext_business_businessContent);
+		businessContentEditText=(EditText)findViewById(R.id.edittext_query_business_business);
 		startTimeEditText = (EditText)findViewById(R.id.edittext_query_business_startTime);
 		endTimeEditText=(EditText)findViewById(R.id.edittext_query_business_endTime);
+		
+		indexButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				Intent _Intent = new Intent(QueryBusinessActivity.this, IndexActivity.class);
+				startActivity(_Intent);
+			}
+		});
+		
+		resetButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				businessTypeSpinner.setSelection(0);
+				myBusinessSpinner.setSelection(0);
+				statusSpinner.setSelection(0);
+				businessContentEditText.setText("");
+				businessNoEditText.setText("");
+				startTimeEditText.setText("");
+				endTimeEditText.setText("");
+			}
+		});
 		queryButton.setOnClickListener(new OnClickListener()
 		{
 
@@ -77,18 +108,22 @@ public class QueryBusinessActivity extends Activity
 				BusinessCondition businessCondition = new BusinessCondition();
 				businessCondition.setBusinessType(businessTypeID);
 				//businessCondition.setBusinessId(businessId);
-				businessCondition.setBusinessContent(businessContentEditText.getText().toString());
-				String bId = businessNoEditText.getText().toString();
-				businessCondition.setBusinessId(bId==null ? 0 : Integer.valueOf(bId));
-				businessCondition.setStartTime(startTimeEditText.getText().toString());
-				businessCondition.setEndTime(endTimeEditText.getText().toString());
+				String bc = businessContentEditText.getText() == null ? null : businessContentEditText.getText().toString();
+				businessCondition.setBusinessContent(bc);
+				String bId = businessNoEditText.getText()==null ? null : businessNoEditText.getText().toString();
+				businessCondition.setBusinessId((bId==null || "".equals(bId)) ? 0 : Integer.valueOf(bId));
+				String st = startTimeEditText.getText() == null ? null : startTimeEditText.getText().toString();
+				businessCondition.setStartTime(st);
+				String et = endTimeEditText.getText() == null ? null : endTimeEditText.getText().toString();
+				businessCondition.setEndTime(et);
 				
 				Intent _Intent = new Intent(QueryBusinessActivity.this,
 						BusinessListActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("businessCondition", businessCondition);
 				_Intent.putExtras(bundle);
-				startActivity(_Intent);
+				//startActivity(_Intent);
+				startActivityForResult(_Intent, 0);
 			}
 		});
 		
@@ -100,7 +135,7 @@ public class QueryBusinessActivity extends Activity
 			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
-				new DatePickerDialog(QueryBusinessActivity.this, new DatePickerDialog.OnDateSetListener() {
+				DatePickerDialog dlg = new DatePickerDialog(QueryBusinessActivity.this, new DatePickerDialog.OnDateSetListener() {
 					@Override
 					public void onDateSet(DatePicker view, int year, int month, int day) {
 						// TODO Auto-generated method stub
@@ -111,7 +146,8 @@ public class QueryBusinessActivity extends Activity
 						    .append((day < 10) ? 0 + day : day) ); 
 					}
 				}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-				calendar.get(Calendar.DAY_OF_MONTH) ).show();
+				calendar.get(Calendar.DAY_OF_MONTH) );
+				dlg.show();
 			}
 		});
 		endTimeEditText.setOnClickListener(new OnClickListener()
@@ -122,7 +158,7 @@ public class QueryBusinessActivity extends Activity
 			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
-				new DatePickerDialog(QueryBusinessActivity.this, new DatePickerDialog.OnDateSetListener() {
+				DatePickerDialog dlg = new DatePickerDialog(QueryBusinessActivity.this, new DatePickerDialog.OnDateSetListener() {
 					@Override
 					public void onDateSet(DatePicker view, int year, int month, int day) {
 						// TODO Auto-generated method stub
@@ -133,7 +169,8 @@ public class QueryBusinessActivity extends Activity
 						    .append((day < 10) ? 0 + day : day) ); 
 					}
 				}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-				calendar.get(Calendar.DAY_OF_MONTH) ).show();
+				calendar.get(Calendar.DAY_OF_MONTH) );
+				dlg.show();
 			}
 		});
 		setData();

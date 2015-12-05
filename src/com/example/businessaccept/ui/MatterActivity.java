@@ -165,6 +165,7 @@ public class MatterActivity extends Activity
 				bundle.putInt("businessId", businessId);
 				_Intent.putExtras(bundle);
 				setResult(0, _Intent);
+				finish();
 			}
 		});
 	}

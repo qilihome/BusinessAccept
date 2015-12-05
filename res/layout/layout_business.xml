@@ -13,7 +13,7 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
@@ -21,7 +21,7 @@
 
             <Spinner
                 android:id="@+id/spinner_business_type"
-                android:layout_width="fill_parent"
+                android:layout_width="0.0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:spinnerMode="dialog" >
@@ -31,7 +31,7 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left"
@@ -39,7 +39,7 @@
 
             <EditText
                 android:id="@+id/edittext_business_meterCode"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="left" />
@@ -52,7 +52,7 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left"
@@ -60,7 +60,7 @@
 
             <EditText
                 android:id="@+id/edittext_business_customerName"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="left"
@@ -70,7 +70,7 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left"
@@ -78,7 +78,7 @@
 
             <EditText
                 android:id="@+id/edittext_business_address"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
@@ -88,7 +88,7 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left"
@@ -96,7 +96,7 @@
 
             <EditText
                 android:id="@+id/edittext_business_telephone"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
@@ -106,14 +106,14 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="left"
                 android:text="事项描述:" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center" />
@@ -123,7 +123,7 @@
 
             <EditText
                 android:id="@+id/edittext_business_businessContent"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:gravity="left|top"
@@ -136,21 +136,21 @@
 
             <Button
                 android:id="@+id/button_business_index"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="首页" />
 
             <Button
                 android:id="@+id/button_business_query_business"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="业务看板" />
 
             <Button
                 android:id="@+id/button_business_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="提交" />

@@ -29,7 +29,7 @@ public class BusinessListActivity extends Activity
 		BusinessCondition businessCondition = (BusinessCondition)getIntent().getSerializableExtra("businessCondition");
 		setContentView(R.layout.layout_business_list);
 		if (businessCondition == null){
-			Toast.makeText(BusinessListActivity.this, "获取条件失败，请稍后再试！",3000);
+			Toast.makeText(BusinessListActivity.this, "获取条件失败，请稍后再试！",3000).show();
 			return;
 		}
 		
