@@ -31,10 +31,13 @@ public class IndexActivity extends Activity
 	private TextView welcome;
 	private TextView queryBusinessTextView;
 	private Button newBusiness;
+	private Button queryBusiness;
 	private IBusinessInfoService businessInfoService = new BusinessInfoServiceImpl();
 	private ListView lv ;
 	private PendingListViewAdapter adapter = null;
 	List<BusinessInfoVo> list = null;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +51,7 @@ public class IndexActivity extends Activity
 		lv=(ListView)findViewById(R.id.list_index_businesses);
 		welcome.setText("欢迎您," + AdminHepler.getAdminName(IndexActivity.this));
 		newBusiness = (Button) findViewById(R.id.button_index_new_business);
+		queryBusiness = (Button)findViewById(R.id.button_index_query_business);
 		newBusiness.setOnClickListener(new OnClickListener()
 		{
 
@@ -57,6 +61,18 @@ public class IndexActivity extends Activity
 				// TODO Auto-generated method stub
 				Intent _Intent = new Intent(IndexActivity.this,
 						NewBusinessActivity.class);
+				startActivity(_Intent);
+			}
+		});
+		queryBusiness.setOnClickListener(new OnClickListener()
+		{
+
+			@Override
+			public void onClick(View v)
+			{
+				// TODO Auto-generated method stub
+				Intent _Intent = new Intent(IndexActivity.this,
+						QueryBusinessActivity.class);
 				startActivity(_Intent);
 			}
 		});

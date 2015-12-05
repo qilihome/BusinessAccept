@@ -23,20 +23,21 @@ import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
-import com.example.businessaccept.entity.WorkFlow;
-import com.example.businessaccept.service.IWorkFlowService;
+import com.example.businessaccept.entity.Customer;
+import com.example.businessaccept.service.ICustomerService;
 import com.example.businessaccept.service.ServiceRulesException;
 import com.example.businessaccept.util.Constant;
 import com.example.businessaccept.util.JsonHepler;
 
-public class WorkFlowServiceImpl implements IWorkFlowService
+public class CustomerServiceImpl implements ICustomerService
 {
 
 	@Override
-	public WorkFlow saveOrUpdate(WorkFlow workFlow) throws Exception
+	public List<Customer> query(Customer customer) throws Exception
 	{
+		List<Customer> list = null;
 		// post
-				String uri = "http://10.0.2.2:8080/ba/workflowAction_saveOrUpdate.action";
+				String uri = "http://10.0.2.2:8080/ba/customerAction_query.action";
 
 				// 参数设置
 				HttpParams params = new BasicHttpParams();
@@ -58,8 +59,8 @@ public class WorkFlowServiceImpl implements IWorkFlowService
 
 				HttpClient client = new DefaultHttpClient(conn, params);
 				HttpPost post = new HttpPost(uri);
-				NameValuePair businessInfoJson = new BasicNameValuePair("workflowStr",
-						JsonHepler.toJSON(workFlow));
+				NameValuePair businessInfoJson = new BasicNameValuePair("customerStr",
+						JsonHepler.toJSON(customer));
 				List<NameValuePair> paramters = new ArrayList<NameValuePair>();
 				paramters.add(businessInfoJson);
 				post.setEntity(new UrlEncodedFormEntity(paramters, HTTP.UTF_8));
@@ -69,20 +70,20 @@ public class WorkFlowServiceImpl implements IWorkFlowService
 				if (status != HttpStatus.SC_OK)
 				{
 					throw new ServiceRulesException(
-							String.format(Constant.REQUEST_ERROR, "保存或更新流程节点", status));
+							String.format(Constant.REQUEST_ERROR, "查询户主信息", status));
 				}
 
 				String result = EntityUtils.toString(response.getEntity(), HTTP.UTF_8);
 
-				if (null != result && !"".equals(result))
+				if (result != null && !"null".equals(result) && "" != result)
 				{
-					workFlow.setWorkFlowId(Integer.valueOf(result));
-					return workFlow;
+					list = (List<Customer>)JsonHepler.parseCollection(result, ArrayList.class, Customer.class);
 				}
 				else
 				{
-					throw new ServiceRulesException(String.format(Constant.RESPOSE_ERROR, "保存或更新流程节点"));
+					throw new ServiceRulesException(String.format(Constant.RESPOSE_ERROR, "查询户主信息"));
 				}
+				return list;
 	}
 
 }

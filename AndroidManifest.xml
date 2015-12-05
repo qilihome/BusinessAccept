@@ -39,7 +39,7 @@
             android:label="@string/app_name_matter" >
         </activity>
         <activity
-            android:name="com.example.businessaccept.ui.QueryUserActivity"
+            android:name="com.example.businessaccept.ui.QueryCustomerActivity"
             android:label="@string/app_name_query_user" >
         </activity>
         <activity
@@ -71,6 +71,11 @@
             android:name="com.example.businessaccept.ui.AcceptActivity"
             android:label="@string/app_name_accept" >
         </activity>
+        <activity
+            android:name="com.example.businessaccept.ui.TestActivity"
+            android:label="@string/app_name_accept" >
+        </activity>
+        
     </application>
 
 </manifest>

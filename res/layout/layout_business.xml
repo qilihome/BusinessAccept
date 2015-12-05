@@ -42,8 +42,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:gravity="left"
-                android:text="170000" />
+                android:gravity="left" />
+            <Button android:id="@+id/button_business_queryCustomer" 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查询"/>
         </TableRow>
 
         <TableRow android:orientation="horizontal" >

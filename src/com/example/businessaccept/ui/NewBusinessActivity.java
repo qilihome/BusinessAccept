@@ -10,6 +10,7 @@ import com.example.businessaccept.service.IBusinessInfoService;
 import com.example.businessaccept.service.IBusinessTypeService;
 import com.example.businessaccept.service.impl.BusinessInfoServiceImpl;
 import com.example.businessaccept.service.impl.BusinessTypeServiceImpl;
+import com.example.businessaccept.util.AdminHepler;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -32,6 +33,8 @@ public class NewBusinessActivity extends Activity
 	private Button submitButton;
 
 	private Button queryBusinessButton;
+	
+	private Button queryCustomerButton;
 
 	private Spinner businessTypeSpinner;
 
@@ -52,6 +55,8 @@ public class NewBusinessActivity extends Activity
 	IBusinessInfoService businessInfoService = new BusinessInfoServiceImpl();
 	
 	private int businessTypeID = -1;
+	
+	private BusinessInfo businessInfo = new BusinessInfo();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -93,6 +98,7 @@ public class NewBusinessActivity extends Activity
 	{
 		businessIndexButton = (Button) findViewById(R.id.button_business_index);
 		submitButton = (Button) findViewById(R.id.button_business_submit);
+		queryCustomerButton = (Button)findViewById(R.id.button_business_queryCustomer);
 		queryBusinessButton = (Button) findViewById(
 				R.id.button_business_query_business);
 		
@@ -125,7 +131,7 @@ public class NewBusinessActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				BusinessInfo businessInfo = new BusinessInfo();
+				
 				businessInfo.setBusinessTypeID(businessTypeID);
 				
 				String meterCodeValue = meterCode.getText().toString();
@@ -143,11 +149,16 @@ public class NewBusinessActivity extends Activity
 				String businessContentValue = businessContent.getText().toString();
 				businessInfo.setBusinessContent(businessContentValue);
 				
-				businessInfo.setOperatorID(1);
+				businessInfo.setOperatorID(AdminHepler.getAdminId(NewBusinessActivity.this));
 				
 				try
 				{
-					businessInfo = businessInfoService.save(businessInfo);
+					if (businessInfo.getBusinessID() < 1){
+						
+						businessInfo = businessInfoService.save(businessInfo);
+					}else{
+						businessInfo = businessInfoService.update(businessInfo);
+					}
 				}
 				catch (Exception e)
 				{
@@ -171,7 +182,17 @@ public class NewBusinessActivity extends Activity
 				
 			}
 		});
+		queryCustomerButton.setOnClickListener(new OnClickListener()
+		{
 
+			@Override
+			public void onClick(View v)
+			{
+				Intent _Intent = new Intent(NewBusinessActivity.this,
+						QueryCustomerActivity.class);
+				startActivityForResult(_Intent,0);
+			}
+		});
 		queryBusinessButton.setOnClickListener(new OnClickListener()
 		{
 
@@ -232,4 +253,19 @@ public class NewBusinessActivity extends Activity
 		{
 		}
 	}
+	
+	// 回调方法，从第二个页面回来的时候会执行这个方法  
+    @Override  
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
+        String customerNo = data.getStringExtra("customerNo");  
+        // 根据上面发送过去的请求吗来区别  
+        switch (resultCode) {  
+        case 0:  
+        	meterCode.setText(customerNo);  
+            break;  
+        default:  
+            break;  
+        }  
+        super.onActivityResult(requestCode, resultCode, data);
+    }  
 }

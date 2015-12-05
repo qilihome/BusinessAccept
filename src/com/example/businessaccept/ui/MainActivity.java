@@ -209,6 +209,8 @@ public class MainActivity extends Activity
 				//我将用户信息保存到其中，你也可以保存登录状态
 				editor.commit();
 				Intent _Intent = new Intent(_MainActivity, IndexActivity.class);
+				//Intent _Intent = new Intent(_MainActivity, TestActivity.class);
+				
 				_MainActivity.startActivity(_Intent);
 				_MainActivity.finish();
 				break;

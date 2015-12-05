@@ -48,7 +48,7 @@ public class PendingListViewAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		ListItemView mListItemView = null;
-		if (mListItemView == null)
+		if (convertView == null)
 		{
 			mListItemView = new ListItemView();
 			convertView = LayoutInflater.from(mContext)

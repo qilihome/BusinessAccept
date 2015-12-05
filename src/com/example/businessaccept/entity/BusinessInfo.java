@@ -36,7 +36,7 @@ public class BusinessInfo
 	 * 状态标志
 	 * 0：新建；1：流转；2：注销(逻辑删除)；3：结束
 	 * */
-	private int Status = 0;
+	private int status = 0;
 	/*业务类别ID*/
 	private int businessTypeID;
 	/*业务编号*/
@@ -115,11 +115,11 @@ public class BusinessInfo
 	}
 	public int getStatus()
 	{
-		return Status;
+		return status;
 	}
 	public void setStatus(int status)
 	{
-		Status = status;
+		this.status = status;
 	}
 	public int getBusinessTypeID()
 	{

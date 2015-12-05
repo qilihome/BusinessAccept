@@ -14,6 +14,7 @@ import com.example.businessaccept.service.IWorkFlowService;
 import com.example.businessaccept.service.impl.DepartmentServiceImpl;
 import com.example.businessaccept.service.impl.UserServiceImpl;
 import com.example.businessaccept.service.impl.WorkFlowServiceImpl;
+import com.example.businessaccept.util.AdminHepler;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -73,8 +74,8 @@ public class MatterActivity extends Activity
 		departmentSpinner = (Spinner) findViewById(R.id.spinner_matter_depart);
 		adminSpinner = (Spinner) findViewById(R.id.spinner_matter_customer);
 		saveButton = (Button)findViewById(R.id.button_matter_save);
-		indexButton = (Button) findViewById(R.id.button_business_index);
-		queryBusinessButton = (Button)findViewById(R.id.button_business_query_business);
+		indexButton = (Button) findViewById(R.id.button_matter_index);
+		queryBusinessButton = (Button)findViewById(R.id.button_matter_query_business);
 		updateBusinessButton = (Button)findViewById(R.id.button_matter_business_update);
 		try
 		{
@@ -112,7 +113,7 @@ public class MatterActivity extends Activity
 				WorkFlow workFlow = new WorkFlow();
 				workFlow.setBusinessId(businessId);
 				workFlow.setDepartId(currentDeptId);
-				workFlow.setOperatorId(currentAdminId);
+				workFlow.setOperatorId(AdminHepler.getAdminId(MatterActivity.this));
 				workFlow.setCreateTime(new Date());
 				workFlow.setStatus(0);
 				try
@@ -163,7 +164,7 @@ public class MatterActivity extends Activity
 				Bundle bundle = new Bundle();
 				bundle.putInt("businessId", businessId);
 				_Intent.putExtras(bundle);
-				startActivity(_Intent);
+				setResult(0, _Intent);
 			}
 		});
 	}

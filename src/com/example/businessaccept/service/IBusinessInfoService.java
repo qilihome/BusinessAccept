@@ -10,6 +10,8 @@ public interface IBusinessInfoService
 {
 	BusinessInfo save(BusinessInfo businessInfo) throws Exception;
 	
+	BusinessInfo update(BusinessInfo businessInfo) throws Exception;
+	
 	List<BusinessInfoVo> query(BusinessCondition businessCondition) throws Exception;
 	
 	List<BusinessInfoVo> queryToMyBusinessInfo(int operatorID) throws Exception;
