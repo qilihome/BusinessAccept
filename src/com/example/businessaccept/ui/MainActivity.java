@@ -223,8 +223,4 @@ public class MainActivity extends Activity
 
 	private IHandler iHandler = new IHandler(this);
 	
-	public static void main(String[] args)
-	{
-		
-	}
 }

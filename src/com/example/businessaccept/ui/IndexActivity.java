@@ -18,6 +18,8 @@ import android.os.Message;
 import android.support.v4.view.ViewPager.LayoutParams;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -116,6 +118,22 @@ public class IndexActivity extends Activity
 					"当前待处理业务" + list.size() + "条");
 			adapter = new PendingListViewAdapter(IndexActivity.this, list);
 			lv.setAdapter(adapter);
+			lv.setOnItemClickListener(new OnItemClickListener()
+			{
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id)
+				{
+					// TODO Auto-generated method stub
+					Intent _Intent = new Intent(IndexActivity.this, BusinessMatterActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putInt("from", 0);
+					bundle.putInt("businessInfoId", list.get(position).getBusinessID());
+					_Intent.putExtras(bundle);
+					startActivityForResult(_Intent, 1);
+				}
+			});
 		}
 	}
 

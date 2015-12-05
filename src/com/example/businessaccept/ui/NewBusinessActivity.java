@@ -172,7 +172,7 @@ public class NewBusinessActivity extends Activity
 					Intent _Intent = new Intent(NewBusinessActivity.this,
 							MatterActivity.class);
 					Bundle bundle = new Bundle();
-					bundle.putInt("businessId", bId);
+					bundle.putInt("businessInfoId", bId);
 					_Intent.putExtras(bundle);
 					startActivityForResult(_Intent, 4);
 				}else{

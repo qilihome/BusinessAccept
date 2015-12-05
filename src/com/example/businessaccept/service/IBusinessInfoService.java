@@ -12,7 +12,9 @@ public interface IBusinessInfoService
 	
 	BusinessInfo update(BusinessInfo businessInfo) throws Exception;
 	
-	List<BusinessInfoVo> query(BusinessCondition businessCondition) throws Exception;
+	List<BusinessInfoVo> query(BusinessCondition businessCondition,int pageNo) throws Exception;
 	
 	List<BusinessInfoVo> queryToMyBusinessInfo(int operatorID) throws Exception;
+	
+	BusinessInfoVo queryById(int businessInfoId) throws Exception;
 }

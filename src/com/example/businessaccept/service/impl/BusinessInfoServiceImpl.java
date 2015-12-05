@@ -147,7 +147,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 	}
 
 	@Override
-	public List<BusinessInfoVo> query(BusinessCondition businessCondition)
+	public List<BusinessInfoVo> query(BusinessCondition businessCondition,int pageNo)
 			throws Exception
 	{
 		List<BusinessInfoVo> list = null;
@@ -176,8 +176,12 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 				HttpPost post = new HttpPost(uri);
 				NameValuePair businessInfoJson = new BasicNameValuePair("businessCondition",
 						JsonHepler.toJSON(businessCondition));
+				NameValuePair pageNoValue = new BasicNameValuePair("pageNo",
+						pageNo+"");
+				
 				List<NameValuePair> paramters = new ArrayList<NameValuePair>();
 				paramters.add(businessInfoJson);
+				paramters.add(pageNoValue);
 				post.setEntity(new UrlEncodedFormEntity(paramters, HTTP.UTF_8));
 				HttpResponse response = client.execute(post);
 
@@ -254,6 +258,59 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 					throw new ServiceRulesException(String.format(Constant.RESPOSE_ERROR, "查询待业务信息"));
 				}
 				return list;
+	}
+
+	@Override
+	public BusinessInfoVo queryById(int businessInfoId) throws Exception
+	{
+		// post
+		String uri = "http://10.0.2.2:8080/ba/businessinfoAction_queryById.action";
+
+		// 参数设置
+		HttpParams params = new BasicHttpParams();
+		// 通过params设置请求的字符集
+		HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+		// 设置客户端与服务端连接的超时时间（还没有连接到服务器） ConnectTimeoutException
+		HttpConnectionParams.setConnectionTimeout(params, 3000);
+		// 设置服务器的响应时间（已经连接到服务器了，对话后的响应时间） SocketTimeoutException
+		HttpConnectionParams.setSoTimeout(params, 3000);
+
+		// 设置https与http都可以访问
+		SchemeRegistry sr = new SchemeRegistry();
+		sr.register(new Scheme("https", PlainSocketFactory.getSocketFactory(),
+				433));
+		sr.register(
+				new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+		ClientConnectionManager conn = new ThreadSafeClientConnManager(params,
+				sr);
+
+		HttpClient client = new DefaultHttpClient(conn, params);
+		HttpPost post = new HttpPost(uri);
+		NameValuePair businessInfoIdStr = new BasicNameValuePair("businessInfoId",
+				businessInfoId+"");
+		
+		List<NameValuePair> paramters = new ArrayList<NameValuePair>();
+		paramters.add(businessInfoIdStr);
+		post.setEntity(new UrlEncodedFormEntity(paramters, HTTP.UTF_8));
+		HttpResponse response = client.execute(post);
+
+		int status = response.getStatusLine().getStatusCode();
+		if (status != HttpStatus.SC_OK)
+		{
+			throw new ServiceRulesException(
+					String.format(Constant.REQUEST_ERROR, "查询业务信息", status));
+		}
+
+		String result = EntityUtils.toString(response.getEntity(), HTTP.UTF_8);
+
+		if (result != null && !"null".equals(result) && "" != result)
+		{
+			return (BusinessInfoVo)JsonHepler.parseObject(result, BusinessInfoVo.class);
+		}
+		else
+		{
+			throw new ServiceRulesException(String.format(Constant.RESPOSE_ERROR, "查询业务信息"));
+		}
 	}
 
 }

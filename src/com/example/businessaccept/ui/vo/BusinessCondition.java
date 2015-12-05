@@ -3,11 +3,16 @@ package com.example.businessaccept.ui.vo;
 import java.io.Serializable;
 
 public class BusinessCondition implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int businessType;
 
 	private int operatorId;
 
-	private int status;
+	private int status = -1;
 
 	private int businessId;
 

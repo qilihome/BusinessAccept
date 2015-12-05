@@ -65,7 +65,7 @@ public class MatterActivity extends Activity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		businessId = getIntent().getIntExtra("businessId", 0);
+		businessId = getIntent().getIntExtra("businessInfoId", 0);
 		if (businessId < 1){
 			Toast.makeText(MatterActivity.this, "获取业务ID错误，稍后再试！", 3000);
 			return;
