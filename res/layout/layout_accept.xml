@@ -1,102 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical" >
 
-    <TableRow android:orientation="horizontal" >
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="处理描述:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="处理描述:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_accept_bcontent"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="事项处理意见:" />
-    </TableRow>
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="事项处理意见:" />
+        </TableRow>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:hint="事项处理意见" />
-    </TableRow>
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-    <TableRow android:orientation="horizontal" >
+            <EditText
+                android:id="@+id/edittext_accept_businessContent"
+                android:layout_width="0.0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="left|top"
+                android:hint="请填入事项描述"
+                android:inputType="textMultiLine"
+                android:minLines="6" />
+        </TableRow>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:hint="提交" />
-    </TableRow>
-    
-    <TableRow android:orientation="horizontal" >
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:hint="确定指定" />
-    </TableRow>
-    
-     <TableRow android:orientation="horizontal" >
-		<TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="业务受理部门" />
+            <Button
+                android:id="@+id/button_accept_workflow"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="3"
+                android:hint="提交" />
+        </TableRow>
 
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-        
-    </TableRow>
-     <TableRow android:orientation="horizontal" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="业务受理人" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </TableRow>
-    
-      <TableRow android:orientation="horizontal" >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="首页" />
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="业务受理部门:" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="结束业务" />
-        
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="返回列表" />
-    </TableRow>
+            <Spinner
+                android:id="@+id/spinner_accept_dept"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-</TableLayout>
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="业务受理人:" />
+
+            <Spinner
+                android:id="@+id/spinner_accept_user"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
+
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
+            <Button
+                android:id="@+id/button_accept_confirm"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="3"
+                android:hint="确定指定" />
+        </TableRow>
+
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <Button
+                android:id="@+id/button_accept_index"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="首页" />
+
+            <Button
+                android:id="@+id/button_accept_over"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="结束业务" />
+
+            <Button
+                android:id="@+id/button_accept_blist"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="返回列表" />
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

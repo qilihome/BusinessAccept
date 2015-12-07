@@ -67,7 +67,7 @@ public class MatterActivity extends Activity
 		super.onCreate(savedInstanceState);
 		businessId = getIntent().getIntExtra("businessInfoId", 0);
 		if (businessId < 1){
-			Toast.makeText(MatterActivity.this, "获取业务ID错误，稍后再试！", 3000);
+			Toast.makeText(MatterActivity.this, "获取业务ID错误，稍后再试！", 3000).show();
 			return;
 		}
 		setContentView(R.layout.layout_matter);
@@ -113,12 +113,15 @@ public class MatterActivity extends Activity
 				WorkFlow workFlow = new WorkFlow();
 				workFlow.setBusinessId(businessId);
 				workFlow.setDepartId(currentDeptId);
-				workFlow.setOperatorId(AdminHepler.getAdminId(MatterActivity.this));
+				workFlow.setOperatorId(currentAdminId);
 				workFlow.setCreateTime(new Date());
 				workFlow.setStatus(0);
 				try
 				{
 					workFlowService.saveOrUpdate(workFlow);
+					Intent _Intent = new Intent(MatterActivity.this,
+							IndexActivity.class);
+					startActivity(_Intent);
 				}
 				catch (Exception e)
 				{
@@ -164,7 +167,7 @@ public class MatterActivity extends Activity
 				Bundle bundle = new Bundle();
 				bundle.putInt("businessId", businessId);
 				_Intent.putExtras(bundle);
-				setResult(0, _Intent);
+				setResult(1, _Intent);
 				finish();
 			}
 		});

@@ -1,14 +1,9 @@
-package com.example.businessaccept.entity;
+package com.example.businessaccept.ui.vo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 流程节点表tb_fun_WorkFlow
- * 
- * @author liqi phone 18771970972 qq 197399622
- */
-public class WorkFlow implements Serializable
+public class WorkFlowVo implements Serializable
 {
 	/**
 	 * 
@@ -40,6 +35,11 @@ public class WorkFlow implements Serializable
 	 * 状态标志 0：待处理；1：已处理；2：注销；
 	 */
 	private int status;
+	private String departName;
+	private String name;
+	
+	
+	
 	public int getWorkFlowId()
 	{
 		return workFlowId;
@@ -136,6 +136,24 @@ public class WorkFlow implements Serializable
 	{
 		this.status = status;
 	}
-	
-	
+	public static long getSerialversionuid()
+	{
+		return serialVersionUID;
+	}
+	public String getDepartName()
+	{
+		return departName;
+	}
+	public void setDepartName(String departName)
+	{
+		this.departName = departName;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 }

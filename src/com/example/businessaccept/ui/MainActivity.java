@@ -78,10 +78,10 @@ public class MainActivity extends Activity
 				final String loginName = loginNameEditText.getText().toString();
 				final String loginPassword = loginPasswordEditText.getText()
 						.toString();
-				Toast.makeText(MainActivity.this, "登陆名： " + loginName,
-						Toast.LENGTH_SHORT).show();
-				Toast.makeText(MainActivity.this, "密码： " + loginPassword,
-						Toast.LENGTH_SHORT).show();
+				//Toast.makeText(MainActivity.this, "登陆名： " + loginName,
+						//Toast.LENGTH_SHORT).show();
+				//Toast.makeText(MainActivity.this, "密码： " + loginPassword,
+						//Toast.LENGTH_SHORT).show();
 						/**
 						 * 检验
 						 */

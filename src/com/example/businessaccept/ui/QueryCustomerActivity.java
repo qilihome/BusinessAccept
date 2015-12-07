@@ -17,6 +17,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -27,7 +29,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class QueryCustomerActivity extends Activity
+public class QueryCustomerActivity extends Activity implements OnScrollListener
 {
 	private Button queryButton;
 	private Button callbackButton;
@@ -40,8 +42,10 @@ public class QueryCustomerActivity extends Activity
 	private ArrayAdapter<Customer> adapter;
 
 	private ListView customerListView;
-	
+
 	private Intent _Intent;
+	private int pageNo = 0;// 设置pageNo的初始化值为0，即默认获取的是第一页的数据
+	private int visibleLastIndex = 0; // 最后的可视项索引
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -65,48 +69,10 @@ public class QueryCustomerActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-
-				final Customer customer = new Customer();
-				String vStr = valueEditText.getText().toString();
-				if (null != vStr || !"".equals(vStr))
-					if (1 == fieldPosition)
-					{
-						customer.setCustomerNo(vStr);
-					}
-					else if (2 == fieldPosition)
-					{
-						customer.setCustomerName(vStr);
-					}
-					else if (3 == fieldPosition)
-					{
-						customer.setAddress(vStr);
-					}
-					else if (2 == fieldPosition)
-					{
-						customer.setPhone(vStr);
-					}
-				/**
-				 * 副线程
-				 */
-				Thread thread = new Thread(new Runnable()
-				{
-
-					@Override
-					public void run()
-					{
-						try
-						{
-							list = customerService.query(customer);
-							iHandler.sendEmptyMessage(1);
-						}
-						catch (Exception e)
-						{
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				});
-				thread.start();
+				if (null != list){
+					list.clear();
+				}
+				getData(0);
 
 			}
 		});
@@ -117,11 +83,11 @@ public class QueryCustomerActivity extends Activity
 			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
-				//Intent _Intent = new Intent(QueryCustomerActivity.this,
-				//		NewBusinessActivity.class);
-				//startActivity(_Intent);
+				// Intent _Intent = new Intent(QueryCustomerActivity.this,
+				// NewBusinessActivity.class);
+				// startActivity(_Intent);
 				setResult(0, _Intent);
-				//调用这个当你的活动,应该关闭。ActivityResult传回给谁了你通过onActivityResult()。
+				// 调用这个当你的活动,应该关闭。ActivityResult传回给谁了你通过onActivityResult()。
 				finish();
 			}
 		});
@@ -145,6 +111,49 @@ public class QueryCustomerActivity extends Activity
 		});
 	}
 
+	private void getData(final int pageNo){
+		final Customer customer = new Customer();
+		String vStr = valueEditText.getText().toString();
+		if (null != vStr || !"".equals(vStr))
+			if (1 == fieldPosition)
+			{
+				customer.setCustomerNo(vStr);
+			}
+			else if (2 == fieldPosition)
+			{
+				customer.setCustomerName(vStr);
+			}
+			else if (3 == fieldPosition)
+			{
+				customer.setAddress(vStr);
+			}
+			else if (2 == fieldPosition)
+			{
+				customer.setPhone(vStr);
+			}
+		/**
+		 * 副线程
+		 */
+		Thread thread = new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				try
+				{
+					list = customerService.query(customer, pageNo);
+					iHandler.sendEmptyMessage(1);
+				}
+				catch (Exception e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		thread.start();
+	}
 	private void showTip(String msg)
 	{
 		Toast.makeText(QueryCustomerActivity.this, msg, Toast.LENGTH_SHORT)
@@ -161,10 +170,11 @@ public class QueryCustomerActivity extends Activity
 
 		adapter = new ArrayAdapter<Customer>(this,
 				android.R.layout.simple_list_item_single_choice, list);
-		//AutoLoadListener autoLoadListener = new AutoLoadListener(callBack);
-		//customerListView.setOnScrollListener(autoLoadListener);
+		// AutoLoadListener autoLoadListener = new AutoLoadListener(callBack);
+		// customerListView.setOnScrollListener(autoLoadListener);
 
 		customerListView.setAdapter(adapter);
+		customerListView.setOnScrollListener(this);
 		customerListView.setOnItemClickListener(new OnItemClickListener()
 		{
 
@@ -176,7 +186,7 @@ public class QueryCustomerActivity extends Activity
 				String customerNo = list.get(position).getCustomerNo();
 				_Intent.putExtra("customerNo", customerNo);
 				setResult(0, _Intent);
-				//调用这个当你的活动,应该关闭。ActivityResult传回给谁了你通过onActivityResult()。
+				// 调用这个当你的活动,应该关闭。ActivityResult传回给谁了你通过onActivityResult()。
 				finish();
 			}
 		});
@@ -244,4 +254,26 @@ public class QueryCustomerActivity extends Activity
 	}
 
 	private IHandler iHandler = new IHandler(this);
+
+	@Override
+	public void onScrollStateChanged(AbsListView view, int scrollState)
+	{
+		// TODO Auto-generated method stub
+		int itemsLastIndex = adapter.getCount(); // 数据集最后一项的索引
+		int lastIndex = itemsLastIndex; // 加上底部的loadMoreView项
+		if (scrollState == OnScrollListener.SCROLL_STATE_IDLE
+				&& visibleLastIndex == lastIndex)
+		{
+			// 如果是自动加载,可以在这里放置异步加载数据的代码
+			getData(pageNo+1);
+		}
+	}
+
+	@Override
+	public void onScroll(AbsListView view, int firstVisibleItem,
+			int visibleItemCount, int totalItemCount)
+	{
+
+		this.visibleLastIndex = totalItemCount;
+	}
 }

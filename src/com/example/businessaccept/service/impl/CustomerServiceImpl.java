@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements ICustomerService
 {
 
 	@Override
-	public List<Customer> query(Customer customer) throws Exception
+	public List<Customer> query(Customer customer, int pageNo) throws Exception
 	{
 		List<Customer> list = null;
 		// post
@@ -61,8 +61,12 @@ public class CustomerServiceImpl implements ICustomerService
 				HttpPost post = new HttpPost(uri);
 				NameValuePair businessInfoJson = new BasicNameValuePair("customerStr",
 						JsonHepler.toJSON(customer));
+				NameValuePair pageNoJson = new BasicNameValuePair("pageNo",
+						pageNo+"");
+				
 				List<NameValuePair> paramters = new ArrayList<NameValuePair>();
 				paramters.add(businessInfoJson);
+				paramters.add(pageNoJson);
 				post.setEntity(new UrlEncodedFormEntity(paramters, HTTP.UTF_8));
 				HttpResponse response = client.execute(post);
 

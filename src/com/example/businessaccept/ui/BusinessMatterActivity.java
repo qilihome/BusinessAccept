@@ -2,6 +2,8 @@ package com.example.businessaccept.ui;
 
 import java.lang.ref.WeakReference;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.conn.ConnectTimeoutException;
 
@@ -28,6 +30,8 @@ public class BusinessMatterActivity extends Activity
 	IBusinessInfoService businessInfoService = new BusinessInfoServiceImpl();
 	private int businessInfoId;
 	private int from;
+	private int position;
+	private List<BusinessInfoVo> listAll;
 	private BusinessInfoVo businessInfoVo ;
 	
 	private TextView businessNoTextView;
@@ -45,6 +49,8 @@ public class BusinessMatterActivity extends Activity
 	private Button indexButton;
 	private Button callbackButton;
 	private Button followRecordButton;
+	private Button preButton;
+	private Button nextButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -52,6 +58,8 @@ public class BusinessMatterActivity extends Activity
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		businessInfoId = getIntent().getExtras().getInt("businessInfoId");
+		position = getIntent().getExtras().getInt("position");
+		listAll = (ArrayList<BusinessInfoVo>)getIntent().getExtras().getSerializable("list");
 		from = getIntent().getExtras().getInt("from");
 		setContentView(R.layout.layout_business_matter);
 		
@@ -70,6 +78,86 @@ public class BusinessMatterActivity extends Activity
 		callbackButton = (Button)findViewById(R.id.button_business_matter_callback);
 		indexButton = (Button)findViewById(R.id.button_business_matter_index);
 		followRecordButton = (Button)findViewById(R.id.button_business_matter_follow_record);
+		preButton = (Button)findViewById(R.id.button_business_matter_pre);
+		nextButton =  (Button)findViewById(R.id.button_business_matter_next);
+		getData();
+		indexButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				// TODO Auto-generated method stub
+				Intent _Intent = new Intent(BusinessMatterActivity.this,
+						IndexActivity.class);
+				startActivity(_Intent);
+			}
+		});
+		
+		followRecordButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				// TODO Auto-generated method stub
+				Intent _Intent = new Intent(BusinessMatterActivity.this,
+						FollowRecordActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putInt("businessInfoId", businessInfoId);
+				_Intent.putExtras(bundle);
+				startActivity(_Intent);
+			}
+		});
+		
+		callbackButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				Intent _Intent = null;
+				if (from == 0){
+					_Intent = new Intent(BusinessMatterActivity.this,
+							IndexActivity.class);
+				}else if(from == 1){
+					_Intent = new Intent(BusinessMatterActivity.this,
+							QueryBusinessActivity.class);
+				}
+				// TODO Auto-generated method stub
+				setResult(from, _Intent);
+				finish();
+			}
+		});
+		preButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				if (position-1 >=0){
+					position--;
+					businessInfoId = listAll.get(position).getBusinessID();
+					setData();
+				}
+			}
+		});
+		nextButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				if (position+1 < listAll.size()){
+					position++;
+					businessInfoId = listAll.get(position).getBusinessID();
+					setData();
+				}
+			}
+		});
+	}
+	
+	private void getData(){
 		/**
 		 * 副线程
 		 */
@@ -123,54 +211,6 @@ public class BusinessMatterActivity extends Activity
 			}
 		});
 		thread.start();
-		
-		indexButton.setOnClickListener(new OnClickListener()
-		{
-			
-			@Override
-			public void onClick(View v)
-			{
-				// TODO Auto-generated method stub
-				Intent _Intent = new Intent(BusinessMatterActivity.this,
-						IndexActivity.class);
-				startActivity(_Intent);
-			}
-		});
-		
-		followRecordButton.setOnClickListener(new OnClickListener()
-		{
-			
-			@Override
-			public void onClick(View v)
-			{
-				// TODO Auto-generated method stub
-				Intent _Intent = new Intent(BusinessMatterActivity.this,
-						FollowRecordActivity.class);
-				Bundle bundle = new Bundle();
-				bundle.putInt("businessInfoId", businessInfoId);
-				startActivity(_Intent);
-			}
-		});
-		
-		callbackButton.setOnClickListener(new OnClickListener()
-		{
-			
-			@Override
-			public void onClick(View v)
-			{
-				Intent _Intent = null;
-				if (from == 0){
-					_Intent = new Intent(BusinessMatterActivity.this,
-							IndexActivity.class);
-				}else if(from == 1){
-					_Intent = new Intent(BusinessMatterActivity.this,
-							QueryBusinessActivity.class);
-				}
-				// TODO Auto-generated method stub
-				setResult(from, _Intent);
-				finish();
-			}
-		});
 	}
 	
 	private void setData(){
@@ -179,7 +219,7 @@ public class BusinessMatterActivity extends Activity
 			
 			businessTypeNameTextView.setText(businessInfoVo.getBusinessTypeName());
 			
-			//customerNoTextView.setText(businessInfoVo.get);
+			customerNoTextView.setText(businessInfoVo.getMeterCode());
 			
 			customerNameTextView.setText(businessInfoVo.getCustomerName());
 			addressTextView.setText(businessInfoVo.getAddress());

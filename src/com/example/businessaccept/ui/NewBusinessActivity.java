@@ -131,13 +131,25 @@ public class NewBusinessActivity extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				
+				if (businessTypeID < 0){
+					Toast.makeText(NewBusinessActivity.this, "请选择业务类别", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				businessInfo.setBusinessTypeID(businessTypeID);
 				
+				
 				String meterCodeValue = meterCode.getText().toString();
+				if (null == meterCodeValue || "".equals(meterCodeValue)){
+					Toast.makeText(NewBusinessActivity.this, "请输入或选择立户编号", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				businessInfo.setMeterCode(meterCodeValue);
 				
 				String customerNameValue = customerName.getText().toString();
+				if (null == customerNameValue || "".equals(meterCodeValue)){
+					Toast.makeText(NewBusinessActivity.this, "请输入户主名", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				businessInfo.setCustomerName(customerNameValue);
 				
 				String addressValue = address.getText().toString();
@@ -147,6 +159,10 @@ public class NewBusinessActivity extends Activity
 				businessInfo.setTelephone(telephoneValue);
 				
 				String businessContentValue = businessContent.getText().toString();
+				if (null == businessContentValue || "".equals(meterCodeValue)){
+					Toast.makeText(NewBusinessActivity.this, "请输入描述事项", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				businessInfo.setBusinessContent(businessContentValue);
 				
 				businessInfo.setOperatorID(AdminHepler.getAdminId(NewBusinessActivity.this));
@@ -218,7 +234,7 @@ public class NewBusinessActivity extends Activity
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			Toast.makeText(NewBusinessActivity.this, "获取数据失败，请稍后再试",
-					Toast.LENGTH_SHORT);
+					Toast.LENGTH_SHORT).show();
 		}
 		// 将可选内容与ArrayAdapter连接起来
 		adapter = new ArrayAdapter<BusinessType>(this,

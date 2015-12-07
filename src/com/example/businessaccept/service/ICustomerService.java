@@ -6,5 +6,5 @@ import com.example.businessaccept.entity.Customer;
 
 public interface ICustomerService
 {
-	List<Customer> query(Customer customer) throws Exception;
+	List<Customer> query(Customer customer, int pageNo) throws Exception;
 }

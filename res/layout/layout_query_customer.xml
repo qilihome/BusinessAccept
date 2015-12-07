@@ -16,54 +16,62 @@
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="查询字段:" />
 
             <Spinner
                 android:id="@+id/spinner_query_customer_field"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
                 android:entries="@array/query_field" />
         </TableRow>
 
         <TableRow android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="查询值:" />
 
             <EditText
                 android:id="@+id/edittext_query_customer_value"
-                android:layout_width="wrap_content"
+                android:layout_width="0.0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="3" />
         </TableRow>
 
-        <TableRow android:orientation="horizontal" >
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/button_query_customer_query"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="查询" />
 
             <Button
                 android:id="@+id/button_query_customer_callback"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="返回" />
         </TableRow>
 
         <TableRow android:orientation="horizontal" >
-            <ListView 
+
+            <ListView
                 android:id="@+id/listview_query_customer_customer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" 
+                android:layout_weight="4"/>
         </TableRow>
     </TableLayout>
 

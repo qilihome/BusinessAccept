@@ -1,11 +1,16 @@
 package com.example.businessaccept.ui.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.example.businessaccept.entity.BusinessInfo;
 
-public class BusinessInfoVo 
+public class BusinessInfoVo implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/*业务ID*/
 	private int businessID;
 	/*立户编号*/

@@ -1,170 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical" >
 
-    <TableRow android:orientation="horizontal" >
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="业务编号:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/textview_business_matter_businessNo"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="业务编号:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_businessNo"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="业务类别:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/textview_business_matter_businessTypeName"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="业务类别:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_businessTypeName"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="立户编号:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-             android:id="@+id/textview_business_matter_customerNo"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="立户编号:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_customerNo"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="户名主:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-             android:id="@+id/textview_business_matter_customerName"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="户名主:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_customerName"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="地址:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-             android:id="@+id/textview_business_matter_address"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="地址:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_address"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="电话:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-             android:id="@+id/textview_business_matter_phone"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="电话:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_phone"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="提交人:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-             android:id="@+id/textview_business_matter_operatorName"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="提交人:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_operatorName"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="提交日期:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/textview_business_matter_createTime"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="提交日期:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_business_matter_createTime"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="事项描述:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/textview_business_matter_businessContent"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"  />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="事项描述:" />
 
-    <TableRow android:orientation="horizontal" >
-		<Button
-		    android:id="@+id/button_business_matter_index"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="首页" />
+            <TextView
+                android:id="@+id/textview_business_matter_businessContent"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <Button
-            android:id="@+id/button_business_matter_follow_record"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="跟进记录" />
-        
-        <Button
-            android:id="@+id/button_business_matter_callback"
-            android:layout_width="0.0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="返回列表" />
-    </TableRow>
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
+            <Button
+                android:id="@+id/button_business_matter_callback"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="返回" />
 
-</TableLayout>
+            <Button
+                android:id="@+id/button_business_matter_follow_record"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="跟进记录" />
+        </TableRow>
+
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <Button
+                android:id="@+id/button_business_matter_index"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="首页" />
+
+            <Button
+                android:id="@+id/button_business_matter_pre"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="上一条" />
+
+            <Button
+                android:id="@+id/button_business_matter_next"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="下一条" />
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

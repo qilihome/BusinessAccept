@@ -52,9 +52,7 @@ public class BusinessListActivity extends Activity
 		setContentView(R.layout.layout_business_list);
 		if (businessCondition == null)
 		{
-			Toast.makeText(BusinessListActivity.this, "获取条件失败，请稍后再试！", 3000)
-					.show();
-			return;
+			businessCondition = new BusinessCondition();
 		}
 		loadmore = (Button) findViewById(R.id.button_business_list_loadmore);
 		buesinessListView = (ListView) findViewById(
@@ -75,7 +73,6 @@ public class BusinessListActivity extends Activity
 			public void onClick(View v)
 			{
 				// TODO Auto-generated method stub
-				pageNo++;
 				loadData();
 			}
 		});
@@ -95,7 +92,7 @@ public class BusinessListActivity extends Activity
 			{
 				try
 				{
-					list = businessInfoService.query(businessCondition, pageNo);
+					list = businessInfoService.query(businessCondition, pageNo + 1);
 					iHandler.sendEmptyMessage(1);
 				}
 				catch (ConnectTimeoutException e)
@@ -157,6 +154,8 @@ public class BusinessListActivity extends Activity
 					Intent _Intent = new Intent(BusinessListActivity.this, BusinessMatterActivity.class);
 					Bundle bundle = new Bundle();
 					bundle.putInt("from", 1);
+					bundle.putSerializable("list",(ArrayList<BusinessInfoVo>)allList);
+					bundle.putInt("position", position);
 					bundle.putInt("businessInfoId", allList.get(position).getBusinessID());
 					_Intent.putExtras(bundle);
 					startActivityForResult(_Intent, 0);
@@ -165,6 +164,7 @@ public class BusinessListActivity extends Activity
 		}
 		else
 		{
+			pageNo++;
 			adapter.notifyDataSetInvalidated();
 		}
 

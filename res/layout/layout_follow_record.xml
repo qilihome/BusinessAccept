@@ -1,164 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical" >
 
-    <TableRow android:orientation="horizontal" >
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="跟进部门:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="跟进部门:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_follow_record_dept"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="受理人员:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="受理人员:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_follow_record_user"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="被指定日期:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="被指定日期:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_follow_record_createTime"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="受理日期:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="受理日期:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_follow_record_dealTime"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="事件状态:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1" />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="事件状态:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_follow_record_status"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="处理描述:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/textview_follow_record_describe"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="点击放大"
-            android:text="处理描述..." />
-    </TableRow>
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="处理描述:" />
 
-    <TableRow android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/textview_follow_record_bcontent"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="点击放大"
+                android:text="处理描述..." />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="事项注销:" />
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="请输入注销原因" />
+            <TextView
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="事项注销:" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="注销" />
-    </TableRow>
-    
-    <TableRow android:orientation="horizontal" >
+            <EditText
+                android:id="@+id/edittext_follow_record_deal_context"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="请输入注销原因" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="我来受理" />
-    </TableRow>
-    
-    <TableRow android:orientation="horizontal" >
+            <Button
+                android:id="@+id/button_follow_record_deal"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="注销" />
+        </TableRow>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="第一页" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="前一页" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="后一页" />
-    </TableRow>
-    
-    <TableRow android:orientation="horizontal" >
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="首页" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="上一页" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="下一页" />
-    </TableRow>
+            <Button
+                android:id="@+id/button_follow_record_record"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:text="我来受理" />
+        </TableRow>
 
-</TableLayout>
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <Button
+                android:id="@+id/button_follow_record_first_page"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="第一页" />
+
+            <Button
+                android:id="@+id/button_follow_record_previous_page"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="前一页" />
+
+            <Button
+                android:id="@+id/button_follow_record_next_page"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="后一页" />
+        </TableRow>
+
+        <TableRow
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <Button
+                android:id="@+id/button_follow_record_index"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="首页" />
+
+            <Button
+                android:id="@+id/button_follow_record_previous_item"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="上一条" />
+
+            <Button
+                android:id="@+id/button_follow_record_next_item"
+                android:layout_width="0.0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="下一条" />
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>
