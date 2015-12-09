@@ -139,14 +139,11 @@ public class NewBusinessActivity extends Activity
 				
 				
 				String meterCodeValue = meterCode.getText().toString();
-				if (null == meterCodeValue || "".equals(meterCodeValue)){
-					Toast.makeText(NewBusinessActivity.this, "请输入或选择立户编号", Toast.LENGTH_SHORT).show();
-					return;
-				}
+
 				businessInfo.setMeterCode(meterCodeValue);
 				
 				String customerNameValue = customerName.getText().toString();
-				if (null == customerNameValue || "".equals(meterCodeValue)){
+				if (null == customerNameValue || "".equals(customerNameValue)){
 					Toast.makeText(NewBusinessActivity.this, "请输入户主名", Toast.LENGTH_SHORT).show();
 					return;
 				}
@@ -159,7 +156,7 @@ public class NewBusinessActivity extends Activity
 				businessInfo.setTelephone(telephoneValue);
 				
 				String businessContentValue = businessContent.getText().toString();
-				if (null == businessContentValue || "".equals(meterCodeValue)){
+				if (null == businessContentValue || "".equals(businessContentValue)){
 					Toast.makeText(NewBusinessActivity.this, "请输入描述事项", Toast.LENGTH_SHORT).show();
 					return;
 				}

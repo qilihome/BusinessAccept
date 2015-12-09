@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements ICustomerService
 	{
 		List<Customer> list = null;
 		// post
-				String uri = "http://10.0.2.2:8080/ba/customerAction_query.action";
+				String uri = "http://192.168.3.3:8080/ba/customerAction_query.action";
 
 				// 参数设置
 				HttpParams params = new BasicHttpParams();

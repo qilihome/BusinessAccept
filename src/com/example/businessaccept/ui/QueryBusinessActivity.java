@@ -17,9 +17,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -141,15 +144,37 @@ public class QueryBusinessActivity extends Activity
 						// TODO Auto-generated method stub
 						//更新EditText控件日期 小于10加0
 						startTimeEditText.setText(new StringBuilder().append(year).append('-')
-						    .append((month + 1) < 10 ? 0 + (month + 1) : (month + 1))
+						    .append((month + 1) < 10 ? "0" + (month + 1) : (month + 1))
 		                    .append('-')
-						    .append((day < 10) ? 0 + day : day) ); 
+						    .append((day < 10) ? "0" + day : day) ); 
 					}
 				}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				calendar.get(Calendar.DAY_OF_MONTH) );
 				dlg.show();
 			}
 		});
+		startTimeEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
+			Calendar calendar = Calendar.getInstance();
+		    public void onFocusChange(View v, boolean hasFocus) {  
+		        if (hasFocus == true) {  
+		            hideIM(v);  
+		         // TODO Auto-generated method stub
+					DatePickerDialog dlg = new DatePickerDialog(QueryBusinessActivity.this, new DatePickerDialog.OnDateSetListener() {
+						@Override
+						public void onDateSet(DatePicker view, int year, int month, int day) {
+							// TODO Auto-generated method stub
+							//更新EditText控件日期 小于10加0
+							startTimeEditText.setText(new StringBuilder().append(year).append('-')
+							    .append((month + 1) < 10 ? "0" + (month + 1) : (month + 1))
+			                    .append('-')
+							    .append((day < 10) ? "0" + day : day) ); 
+						}
+					}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+					calendar.get(Calendar.DAY_OF_MONTH) );
+					dlg.show();   
+		        }  
+		    }  
+		});  
 		endTimeEditText.setOnClickListener(new OnClickListener()
 		{
 			Calendar calendar = Calendar.getInstance();
@@ -164,15 +189,37 @@ public class QueryBusinessActivity extends Activity
 						// TODO Auto-generated method stub
 						//更新EditText控件日期 小于10加0
 						endTimeEditText.setText(new StringBuilder().append(year).append('-')
-						    .append((month + 1) < 10 ? 0 + (month + 1) : (month + 1))
+						    .append((month + 1) < 10 ? "0" + (month + 1) : (month + 1))
 		                    .append('-')
-						    .append((day < 10) ? 0 + day : day) ); 
+						    .append((day < 10) ? "0" + day : day) ); 
 					}
 				}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
 				calendar.get(Calendar.DAY_OF_MONTH) );
 				dlg.show();
 			}
 		});
+		endTimeEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
+			Calendar calendar = Calendar.getInstance();
+		    public void onFocusChange(View v, boolean hasFocus) {  
+		        if (hasFocus == true) {  
+		            hideIM(v);  
+		         // TODO Auto-generated method stub
+					DatePickerDialog dlg = new DatePickerDialog(QueryBusinessActivity.this, new DatePickerDialog.OnDateSetListener() {
+						@Override
+						public void onDateSet(DatePicker view, int year, int month, int day) {
+							// TODO Auto-generated method stub
+							//更新EditText控件日期 小于10加0
+							endTimeEditText.setText(new StringBuilder().append(year).append('-')
+							    .append((month + 1) < 10 ? "0" + (month + 1) : (month + 1))
+			                    .append('-')
+							    .append((day < 10) ? "0" + day : day) ); 
+						}
+					}, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+					calendar.get(Calendar.DAY_OF_MONTH) );
+					dlg.show();   
+		        }  
+		    }  
+		}); 
 		setData();
 	}
 	private IHandler iHandler = new IHandler(this);
@@ -267,4 +314,17 @@ public class QueryBusinessActivity extends Activity
 		{
 		}
 	}
+	
+	// 隐藏手机键盘   
+    private void hideIM(View edt){  
+        try {  
+             InputMethodManager im = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);  
+             IBinder  windowToken = edt.getWindowToken();  
+             if(windowToken != null) {  
+                 im.hideSoftInputFromWindow(windowToken, 0);  
+             }  
+         } catch (Exception e) {  
+             
+         }  
+     }  
 }

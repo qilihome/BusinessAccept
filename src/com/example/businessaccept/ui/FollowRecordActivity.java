@@ -15,7 +15,7 @@ import com.example.businessaccept.ui.vo.WorkFlowVo;
 import com.example.businessaccept.util.DateHepler;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,7 +47,7 @@ public class FollowRecordActivity extends Activity
 	private Button previousItemButton;
 	private Button nextItemButton;
 	private List<WorkFlowVo> list;
-	private static ProgressDialog dialog;
+	private static AlertDialog.Builder dialog;
 	private WorkFlow workFlow;
 
 	private IWorkFlowService workFlowServiceImpl = new WorkFlowServiceImpl();
@@ -138,10 +138,11 @@ public class FollowRecordActivity extends Activity
 					// TODO Auto-generated method stub
 					if (dialog == null)
 					{
-						dialog = new ProgressDialog(FollowRecordActivity.this);
+						dialog = new AlertDialog.Builder(FollowRecordActivity.this);
 						dialog.setTitle("处理描述");
 						dialog.setMessage(list.get(currentPageIndex).getDealContent());
-						dialog.setCancelable(false);
+						//dialog.setCancelable(false);
+						//dialog.setCanceledOnTouchOutside(true);
 						dialog.show();
 					}else{
 						dialog.setMessage(list.get(currentPageIndex).getDealContent());

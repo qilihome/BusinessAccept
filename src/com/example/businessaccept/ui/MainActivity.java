@@ -97,6 +97,8 @@ public class MainActivity extends Activity
 					dialog.setMessage("登陆中...");
 					dialog.setCancelable(false);
 					dialog.show();
+				}else{
+					dialog.show();
 				}
 				/**
 				 * 副线程

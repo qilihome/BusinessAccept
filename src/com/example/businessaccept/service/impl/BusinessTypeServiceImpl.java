@@ -30,7 +30,7 @@ public class BusinessTypeServiceImpl implements IBusinessTypeService
 		/**
 		 * 真机与wifi在同一个网段
 		 */
-		String uri = "http://10.0.2.2:8080/ba/businesstypeAction_list.action";
+		String uri = "http://192.168.3.3:8080/ba/businesstypeAction_list.action";
 		HttpGet get = new HttpGet(uri);
 		// 响应
 		HttpResponse response = client.execute(get);

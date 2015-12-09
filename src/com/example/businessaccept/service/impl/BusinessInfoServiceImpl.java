@@ -41,7 +41,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 		businessInfo.setOverTime(new Date());
 		
 		// post
-		String uri = "http://10.0.2.2:8080/ba/businessinfoAction_save.action";
+		String uri = "http://192.168.3.3:8080/ba/businessinfoAction_save.action";
 
 		// 参数设置
 		HttpParams params = new BasicHttpParams();
@@ -97,7 +97,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 		businessInfo.setOverTime(new Date());
 		
 		// post
-		String uri = "http://10.0.2.2:8080/ba/businessinfoAction_update.action";
+		String uri = "http://192.168.3.3:8080/ba/businessinfoAction_update.action";
 
 		// 参数设置
 		HttpParams params = new BasicHttpParams();
@@ -152,7 +152,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 	{
 		List<BusinessInfoVo> list = null;
 		// post
-				String uri = "http://10.0.2.2:8080/ba/businessinfoAction_query.action";
+				String uri = "http://192.168.3.3:8080/ba/businessinfoAction_query.action";
 
 				// 参数设置
 				HttpParams params = new BasicHttpParams();
@@ -211,7 +211,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 	{
 		List<BusinessInfoVo> list = null;
 		// post
-				String uri = "http://10.0.2.2:8080/ba/businessinfoAction_queryToBusinesses.action";
+				String uri = "http://192.168.3.3:8080/ba/businessinfoAction_queryToBusinesses.action";
 
 				// 参数设置
 				HttpParams params = new BasicHttpParams();
@@ -264,7 +264,7 @@ public class BusinessInfoServiceImpl implements IBusinessInfoService
 	public BusinessInfoVo queryById(int businessInfoId) throws Exception
 	{
 		// post
-		String uri = "http://10.0.2.2:8080/ba/businessinfoAction_queryById.action";
+		String uri = "http://192.168.3.3:8080/ba/businessinfoAction_queryById.action";
 
 		// 参数设置
 		HttpParams params = new BasicHttpParams();

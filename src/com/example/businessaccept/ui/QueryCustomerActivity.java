@@ -1,6 +1,7 @@
 package com.example.businessaccept.ui;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 	private EditText valueEditText;
 
 	private ICustomerService customerService = new CustomerServiceImpl();
+	private List<Customer> listAll = new ArrayList<Customer>();
 	private List<Customer> list = null;
 	private ArrayAdapter<Customer> adapter;
 
@@ -69,8 +71,11 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 			@Override
 			public void onClick(View v)
 			{
-				if (null != list){
-					list.clear();
+				if (!listAll.isEmpty() && listAll.size() > 0)
+				{
+					listAll.clear();
+					pageNo++;
+					adapter.notifyDataSetInvalidated();
 				}
 				getData(0);
 
@@ -111,7 +116,8 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 		});
 	}
 
-	private void getData(final int pageNo){
+	private void getData(final int pageNo1)
+	{
 		final Customer customer = new Customer();
 		String vStr = valueEditText.getText().toString();
 		if (null != vStr || !"".equals(vStr))
@@ -142,7 +148,8 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 			{
 				try
 				{
-					list = customerService.query(customer, pageNo);
+					list = customerService.query(customer, pageNo1);
+					listAll.addAll(list);
 					iHandler.sendEmptyMessage(1);
 				}
 				catch (Exception e)
@@ -154,6 +161,7 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 		});
 		thread.start();
 	}
+
 	private void showTip(String msg)
 	{
 		Toast.makeText(QueryCustomerActivity.this, msg, Toast.LENGTH_SHORT)
@@ -162,34 +170,42 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 
 	private void showDialog()
 	{
-		if (list.isEmpty())
+		if (listAll.isEmpty())
 		{
 			showTip("无任何数据!");
 			return;
 		}
-
-		adapter = new ArrayAdapter<Customer>(this,
-				android.R.layout.simple_list_item_single_choice, list);
-		// AutoLoadListener autoLoadListener = new AutoLoadListener(callBack);
-		// customerListView.setOnScrollListener(autoLoadListener);
-
-		customerListView.setAdapter(adapter);
-		customerListView.setOnScrollListener(this);
-		customerListView.setOnItemClickListener(new OnItemClickListener()
+		if (pageNo <= 0)
 		{
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id)
+			adapter = new ArrayAdapter<Customer>(this,
+					android.R.layout.simple_list_item_single_choice, listAll);
+			// AutoLoadListener autoLoadListener = new
+			// AutoLoadListener(callBack);
+			// customerListView.setOnScrollListener(autoLoadListener);
+
+			customerListView.setAdapter(adapter);
+			customerListView.setOnScrollListener(this);
+			customerListView.setOnItemClickListener(new OnItemClickListener()
 			{
-				// TODO Auto-generated method stub
-				String customerNo = list.get(position).getCustomerNo();
-				_Intent.putExtra("customerNo", customerNo);
-				setResult(0, _Intent);
-				// 调用这个当你的活动,应该关闭。ActivityResult传回给谁了你通过onActivityResult()。
-				finish();
-			}
-		});
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id)
+				{
+					// TODO Auto-generated method stub
+					String customerNo = listAll.get(position).getCustomerNo();
+					_Intent.putExtra("customerNo", customerNo);
+					setResult(0, _Intent);
+					// 调用这个当你的活动,应该关闭。ActivityResult传回给谁了你通过onActivityResult()。
+					finish();
+				}
+			});
+		}else{
+			pageNo++;
+			adapter.notifyDataSetInvalidated();
+		}
+		
 	}
 
 	AutoLoadCallBack callBack = new AutoLoadCallBack()
@@ -265,7 +281,7 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 				&& visibleLastIndex == lastIndex)
 		{
 			// 如果是自动加载,可以在这里放置异步加载数据的代码
-			getData(pageNo+1);
+			getData(pageNo + 1);
 		}
 	}
 
@@ -274,6 +290,6 @@ public class QueryCustomerActivity extends Activity implements OnScrollListener
 			int visibleItemCount, int totalItemCount)
 	{
 
-		this.visibleLastIndex = totalItemCount;
+		this.visibleLastIndex = firstVisibleItem+visibleItemCount;
 	}
 }

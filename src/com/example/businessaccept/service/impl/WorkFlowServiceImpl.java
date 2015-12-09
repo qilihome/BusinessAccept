@@ -37,7 +37,7 @@ public class WorkFlowServiceImpl implements IWorkFlowService
 	public WorkFlow saveOrUpdate(WorkFlow workFlow) throws Exception
 	{
 		// post
-				String uri = "http://10.0.2.2:8080/ba/workflowAction_saveOrUpdate.action";
+				String uri = "http://192.168.3.3:8080/ba/workflowAction_saveOrUpdate.action";
 
 				// 参数设置
 				HttpParams params = new BasicHttpParams();
@@ -92,7 +92,7 @@ public class WorkFlowServiceImpl implements IWorkFlowService
 	{
 		List<WorkFlowVo> list = null;
 		// post
-				String uri = "http://10.0.2.2:8080/ba/workflowAction_queryByBusinessInfoId.action";
+				String uri = "http://192.168.3.3:8080/ba/workflowAction_queryByBusinessInfoId.action";
 
 				// 参数设置
 				HttpParams params = new BasicHttpParams();
