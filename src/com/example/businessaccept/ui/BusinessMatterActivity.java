@@ -106,7 +106,7 @@ public class BusinessMatterActivity extends Activity
 				Bundle bundle = new Bundle();
 				bundle.putInt("businessInfoId", businessInfoId);
 				_Intent.putExtras(bundle);
-				startActivity(_Intent);
+				startActivityForResult(_Intent,11);
 			}
 		});
 		
@@ -137,7 +137,8 @@ public class BusinessMatterActivity extends Activity
 			{
 				if (position-1 >=0){
 					position--;
-					businessInfoId = listAll.get(position).getBusinessID();
+					businessInfoVo = listAll.get(position);
+					businessInfoId = businessInfoVo.getBusinessID();
 					setData();
 				}
 			}
@@ -150,7 +151,8 @@ public class BusinessMatterActivity extends Activity
 			{
 				if (position+1 < listAll.size()){
 					position++;
-					businessInfoId = listAll.get(position).getBusinessID();
+					businessInfoVo = listAll.get(position);
+					businessInfoId = businessInfoVo.getBusinessID();
 					setData();
 				}
 			}

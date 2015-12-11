@@ -3,6 +3,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fadingEdge="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     android:scrollbars="vertical" >
 
     <TableLayout
@@ -189,24 +193,16 @@
                 android:layout_width="0.0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="首页" />
 
             <Button
-                android:id="@+id/button_follow_record_previous_item"
+                android:id="@+id/button_follow_record_return"
                 android:layout_width="0.0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="上一条" />
-
-            <Button
-                android:id="@+id/button_follow_record_next_item"
-                android:layout_width="0.0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="下一条" />
+                android:layout_weight="2"
+                android:text="返回" />
         </TableRow>
     </TableLayout>
 

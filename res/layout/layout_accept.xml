@@ -64,9 +64,8 @@
                 android:id="@+id/button_accept_workflow"
                 android:layout_width="0.0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
                 android:layout_weight="3"
-                android:hint="提交" />
+                android:text="提交" />
         </TableRow>
 
         <TableRow
@@ -110,9 +109,8 @@
                 android:id="@+id/button_accept_confirm"
                 android:layout_width="0.0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
                 android:layout_weight="3"
-                android:hint="确定指定" />
+                android:text="确定指定" />
         </TableRow>
 
         <TableRow

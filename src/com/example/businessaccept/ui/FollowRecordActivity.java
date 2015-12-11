@@ -44,8 +44,7 @@ public class FollowRecordActivity extends Activity
 	private Button previousPageButton;
 	private Button nextPageButton;
 	private Button indexButton;
-	private Button previousItemButton;
-	private Button nextItemButton;
+	private Button returnButton;
 	private List<WorkFlowVo> list;
 	private static AlertDialog.Builder dialog;
 	private WorkFlow workFlow;
@@ -84,6 +83,7 @@ public class FollowRecordActivity extends Activity
 				R.id.edittext_follow_record_deal_context);
 		dealButton = (Button) findViewById(R.id.button_follow_record_deal);
 		recordButton = (Button) findViewById(R.id.button_follow_record_record);
+		returnButton = (Button) findViewById(R.id.button_follow_record_return);
 		firstPageButton = (Button) findViewById(
 				R.id.button_follow_record_first_page);
 		previousPageButton = (Button) findViewById(
@@ -91,10 +91,6 @@ public class FollowRecordActivity extends Activity
 		nextPageButton = (Button) findViewById(
 				R.id.button_follow_record_next_page);
 		indexButton = (Button) findViewById(R.id.button_follow_record_index);
-		previousItemButton = (Button) findViewById(
-				R.id.button_follow_record_previous_item);
-		nextItemButton = (Button) findViewById(
-				R.id.button_follow_record_next_item);
 	}
 
 	private void setData(int index)
@@ -176,6 +172,7 @@ public class FollowRecordActivity extends Activity
 							try
 							{
 								WorkFlowVo workFlowVo = list.get(list.size()-1);
+								workFlow = new WorkFlow();
 								workFlow.setBusinessId(workFlowVo.getBusinessId());
 								workFlow.setCreateTime(workFlowVo.getCreateTime());
 								workFlow.setDealContent(workFlowVo.getDealContent());
@@ -294,6 +291,19 @@ public class FollowRecordActivity extends Activity
 			{
 				Intent _Intent = new Intent(FollowRecordActivity.this, IndexActivity.class);
 				startActivity(_Intent);
+			}
+		});
+		
+		returnButton.setOnClickListener(new OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				Intent _Intent = new Intent(FollowRecordActivity.this, BusinessMatterActivity.class);
+				//startActivity(_Intent);
+				setResult(12, _Intent);
+				finish();
 			}
 		});
 	}
